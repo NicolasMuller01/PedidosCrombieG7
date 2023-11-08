@@ -13,7 +13,6 @@ type Reseña = {
     puntuaction?: number
 }
 
-type TypeRol = 'DELIVERY' | 'LOCAL' | null
 
 const schemaMenu = yup.object().shape({
 
@@ -23,7 +22,7 @@ const schemaMenu = yup.object().shape({
   
   });
 
-export default function ReviewForm({rol, name}:{rol: TypeRol | null, name: string}) {
+export default function ReviewFormLocal({name}:{name: string}) {
   const [rating, setRating] = useState(0);
 
   const {
@@ -42,24 +41,18 @@ export default function ReviewForm({rol, name}:{rol: TypeRol | null, name: strin
     e?.preventDefault();
     information.puntuaction = rating
     console.log(information);
-    if(rol === 'DELIVERY'){
       try {
         const delivery = await getOrdersFromDeliveryFromUser(name)
       } catch (error) {
         console.log(error);
         
-      }
-    }else{
-
-    }
-    
-
+      }  
 })
 
   return (
     <div className="container mx-auto max-w-screen-lg pl-10 pr-10 m-28">
     <form onSubmit={onSubmit}>
-    <h3 className="text-3xl font-semibold text-center">Reseña al {rol} {name}</h3>
+    <h3 className="text-3xl font-semibold text-center">Reseña al Local {name}</h3>
 
       <div className="flex-col items-center justify-center">
         <div className="pt-8 space-y-2">

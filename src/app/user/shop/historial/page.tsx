@@ -1,23 +1,26 @@
 "use client";
 
-import { getOrdersFromDelivery } from "@/app/hooks/getOrdersFromDelivery";
+import { getAllOrdersFromLocal } from "@/app/hooks/getAllOrdersFromLocal";
+import { getOrdersFromLocal } from "@/app/hooks/getOrdersFromLocal";
 import { useEffect, useState } from "react";
 
-type MyCustomType = {
+type Order = {
   date: string;
   id: string;
+  menuList: Array<any>; // Cambia 'any' al tipo correcto si tienes información específica sobre menuList
   status: string;
   totalPrice: number;
 };
 
 export default function () {
-  const [deliveryOrders, setdeliveryOrders] = useState<MyCustomType[]>([]);
+  const [localOrders, setlocalOrders] = useState<Order[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getOrdersFromDelivery();
-        setdeliveryOrders(data);
+        const data = await getAllOrdersFromLocal();
+        setlocalOrders(data.ordersHistory)
+        
       } catch (error) {
         console.error("Error al obtener los pedidos:", error);
       }
@@ -31,9 +34,9 @@ export default function () {
       <h3 className="text-center text-2xl font-bold">Historial de Pedidos</h3>
 
       <div className="pt-10 pb-10">
-        {deliveryOrders.length > 0 ? (
+        {localOrders.length > 0 ? (
           <div>
-            {deliveryOrders?.map((o) => (
+            {localOrders?.map((o) => (
               <div
                 key={o.id}
                 className="flex flex-col items-center p-4 md:flex-row md:items-center md:justify-between border border-slate-300 rounded-xl gap-2 mt-5"

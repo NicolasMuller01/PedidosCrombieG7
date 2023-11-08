@@ -1,6 +1,7 @@
 'use client'
 
-import ReviewForm from '@/app/Components/ReviewForm/ReviewForm'
+import ReviewFormDelivery from '@/app/Components/ReviewForm/ReviewFormDelivery'
+import ReviewForm from '@/app/Components/ReviewForm/ReviewFormDelivery'
 import { useSearchParams } from 'next/navigation'
 import React from 'react'
 
@@ -13,7 +14,7 @@ const searchParams = useSearchParams()
 
   return (
     <>
-    <ReviewForm rol={rol} name={name}/>
+    {rol === 'DELIVERY' ? <ReviewFormDelivery name={name}/> : null}
     </>
   )
 }
