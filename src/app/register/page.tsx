@@ -1,9 +1,8 @@
 import React from 'react'
 import { Register } from '../Components/Register/Register'
-import FormMenu from '../Components/FormMenu/FormMenu'
 
-//COMPONENTE PRINCIPAL DE REGISTRO
-export const RegisterPage = () => {
+
+export const page = () => {
   return (
     <div className='mt-20'>
         <Register/>
@@ -11,4 +10,4 @@ export const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+export default page
