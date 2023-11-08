@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Link from 'next/link';
 import { getOrdersFromDeliveryFromUser } from '@/app/hooks/getOrdersFromDeliveryFromUser';
+import { postReviews } from '@/app/hooks/postReviews';
+import { getOrdersFromClient } from '@/app/hooks/getOrdersFromClient';
 
 
 type Reseña = {
@@ -22,8 +24,28 @@ const schemaMenu = yup.object().shape({
   
   });
 
-export default function ReviewFormDelivery({name}:{name: string | null}) {
+export default function ReviewFormDelivery({name, idUser, idOrder}:{name: any, idUser: any, idOrder: any}) {
   const [rating, setRating] = useState(0);
+  const [idDelivery, setidDelivery] = useState(0);
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const delivery= await getOrdersFromDeliveryFromUser(name);
+      
+        setidDelivery(delivery)
+      } catch (error) {
+        console.error("Error al obtener los pedidos:", error);
+      }
+    };
+  
+    fetchData();
+
+    
+  }, []);
+  
+  
 
   const {
     register,
@@ -40,12 +62,13 @@ export default function ReviewFormDelivery({name}:{name: string | null}) {
   const onSubmit = handleSubmit(async (information, e) => {
     e?.preventDefault();
     information.puntuaction = rating
-    console.log(information);
-      try {
-        const delivery = await getOrdersFromDeliveryFromUser(name)
-      } catch (error) {
-        console.log(error);
-      }  
+    try {
+
+      const resp = await postReviews(idDelivery, information)
+      
+    } catch (error) {
+      
+    }
 })
 
   return (

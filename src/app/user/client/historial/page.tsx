@@ -55,7 +55,7 @@ const Page = () => {
     const fetchData = async () => {
       try {
         const data = await getOrdersIdType('client');
-        setOrders(data);
+        setOrders(data);      
       } catch (error) {
         console.error("Error al obtener los pedidos:", error);
       }
@@ -111,21 +111,25 @@ const Page = () => {
                     <Link
                       href={{
                         pathname: '/user/client/historial/review',
-                        query: { name: o.local.localName, rol: "LOCAL" }
+                        query: { name: o.local.localName, rol: "LOCAL" , idUser: o.local.id, idOrder: o.id}
                       }}
-                      className="btn btn-neutral p-3 border rounded-2xl flex justify-between"
+                      className="btn btn-neutral p-3 pointer-events-none opacity-50 bg-gray-300 text-gray-600 cursor-not-allowed "
+                      title="Esta acción no está disponible"
                     >
                       <b>Puntuar Local</b>⭐
                     </Link>
                     <Link
-                      href={{
-                        pathname: '/user/client/historial/review',
-                        query: { name: o.delivery?.id, rol: "DELIVERY" }
-                      }}
-                      className="btn btn-neutral p-3 border rounded-2xl flex justify-between"
-                    >
-                      <b>Puntuar Delivery</b>⭐
-                    </Link>
+  href={{
+    pathname: '/user/client/historial/review',
+    query: { name: o.delivery?.id, rol: "DELIVERY", idUser: o.delivery?.id, idOrder: o.id }
+  }}
+  className="btn btn-neutral pointer-events-none opacity-50 bg-gray-300 text-gray-600 cursor-not-allowed relative"
+>
+  <b>Puntuar Delivery</b>⭐
+  <span className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-black text-white px-2 py-1 text-xs rounded pointer-events-none opacity-0 group-hover:opacity-100">
+    Esta acción no está disponible
+  </span>
+</Link>
                   </div>
                 )}
               </div>

@@ -24,11 +24,9 @@ console.log(name);
 
     const response = await axios.get(apiUrl, config);
     
-    console.log(response.data);
-    
 
     if(response.status === 200) {
-      return response.data.ordersHistory;
+      return response.data.profileReviews.id;
     }
 
   } catch (error) {

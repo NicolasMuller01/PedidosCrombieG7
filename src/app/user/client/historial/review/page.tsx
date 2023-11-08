@@ -9,10 +9,13 @@ const Page = () => {
   const searchParams = useSearchParams()
   const rol = searchParams.get('rol')
   const name = searchParams.get('name')
+  const idUser = searchParams.get('idUser')
+  const idOrder = searchParams.get('idOrder')
+  
 
   return (
     <>
-      {rol === 'DELIVERY' ? <ReviewFormDelivery name={name}/> : <ReviewFormLocal name={name}/>}
+      {rol === 'DELIVERY' ? <ReviewFormDelivery name={name} idUser={idUser} idOrder={idOrder} /> : <ReviewFormLocal name={name} />}
     </>
   )
 }
