@@ -1,14 +1,14 @@
 'use client'
 
 import React from 'react'
-import { Login } from '../Components/Login/Login'
+import LoginForm from '../Components/Login/LoginForm';
 
-export const Page= () => {
+const Page = () => {
   return (
     <div className='m-10'>
-        <Login/>
+      <LoginForm/>
     </div>
   )
-}
+};
 
-export default Page
+export default Page;
