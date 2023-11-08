@@ -16,7 +16,7 @@ export const deleteMenuById = async (idMenu: string) => {
     };
 
     const response = await axios.delete(
-      `https://pedidos-crombie-production.up.railway.app/eatables/${idMenu}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/eatables/${idMenu}`,
       { headers }
     );
 

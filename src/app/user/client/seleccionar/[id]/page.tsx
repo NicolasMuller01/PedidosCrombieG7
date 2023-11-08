@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getEatablesById } from "./getEatablesById";
 import { parseCookies } from "nookies";
@@ -24,9 +24,12 @@ type Eatable = {
 
 export default function () {
   const cookies = parseCookies();
-  const nombreRestaurante = cookies.localName;
-  const idRol = cookies.idRol;
+  const idRol = cookies.userId;
   const router = useRouter()
+
+  const searchParams = useSearchParams()
+  const desc = searchParams.get('description')
+  const localName = searchParams.get('localname')
 
   const id = useParams().id;
   const [eatables, setEatables] = useState<Eatable[]>();
@@ -39,7 +42,7 @@ export default function () {
 
   const showModal = async () => {
     setModalVisible(true);
-    const resp = await handleOrderData();
+    const resp = await handleOrderData();    
 
     if (addedEatables) {
       for (let i = 0; i < addedEatables.length; i++) {
@@ -48,7 +51,6 @@ export default function () {
         setTimeout(async () => {
 
           try {      
-
             const response = await patchOrder(resp, eatable);
           } catch (error) {
             console.error("Error al parchear el eatable:", error);
@@ -60,13 +62,11 @@ export default function () {
 
     const clientAddress = await getAddress()
     
-    patchAddressIntoOrder(resp, clientAddress.address)
-
-    const updateOrderStatusConst = await updateOrderStatus(resp, 'SEND')
+    const updateOrderStatusConst = await patchAddressIntoOrder(resp, clientAddress.address)
     
-    if(!updateOrderStatusConst){
+    if(updateOrderStatusConst){
       toast.success("Orden enviada con exito")
-      router.push("/user/stagepedido")
+      router.push("/user/client/historial")
     }
 
 
@@ -143,8 +143,8 @@ export default function () {
                     alt=""
                   />
                   <div>
-                    <h1>asd</h1>
-                    <p>Descuento 20%</p>
+                    <h1>{localName}</h1>
+                    <p>{desc}</p>
                     <p>15-20min - Envio <b>GRATIS</b></p>
                   </div>
                 </div>

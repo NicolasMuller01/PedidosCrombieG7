@@ -1,11 +1,13 @@
 import { parseCookies, setCookie } from "nookies";
 import axios from "axios";
 
-const cookies = parseCookies();
-const userId = cookies.userId;
-const token = cookies.token;
+
 
 export const getLocalByCity = async ({ country, state, city }) => {
+
+  const cookies = parseCookies();
+const userId = cookies.userId;
+const token = cookies.token;
   try {
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -15,7 +17,7 @@ export const getLocalByCity = async ({ country, state, city }) => {
       throw new Error("userId is not defined");
     }
 
-    const response = await axios.get('https://pedidos-crombie-production.up.railway.app/locals/city', {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/locals/city`, {
       params: {
         country,
         state,

@@ -14,7 +14,13 @@ const schemaMenu = yup.object().shape({
   title: yup.string().required("Ingrese un nombre para su menu"),
   description: yup.string().required("Debes Ingresar una descripcion"),
   photo: yup.string(),
-  price: yup.string().required("Ingrese el precio del producto"),
+  price: yup.string().required("Ingrese el precio del producto").test(
+    'Is positive?', 
+    'El numero no puede ser neegativo', 
+    (value) => Number(value) > 0
+  ),
+
+
   menuType: yup.string(),
   name: yup.string()
 });
@@ -66,7 +72,7 @@ const menuId = cookies.menuId;
     information.photo = image;      
     if(typeCrud === "CREATE"){
       try {
-        const response = await fetch(`https://pedidos-crombie-production.up.railway.app/eatables/${userId}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/eatables/${userId}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -84,7 +90,7 @@ const menuId = cookies.menuId;
       }
     }else if(typeCrud === "UPDATE"){
       try {
-        const response = await fetch(`https://pedidos-crombie-production.up.railway.app/eatables/${menuId}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/eatables/${menuId}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

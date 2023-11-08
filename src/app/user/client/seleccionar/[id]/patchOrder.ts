@@ -30,7 +30,7 @@ export const patchOrder = async (id: string, eatables: Eatable) => {
     };
 
     const response = await axios.patch(
-      `https://pedidos-crombie-production.up.railway.app/orders/${id}/eatable`,
+      `${process.env.NEXT_PUBLIC_API_URL}/orders/${id}/eatable`,
       null,
       {
         headers: config.headers,

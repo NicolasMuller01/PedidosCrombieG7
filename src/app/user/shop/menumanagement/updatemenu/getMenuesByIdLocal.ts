@@ -16,7 +16,7 @@ export const getMenusByIdLocal = async () => {
     };
 
     const response = await axios.get(
-      `https://pedidos-crombie-production.up.railway.app/locals/${userId}/menus`,
+      `${process.env.NEXT_PUBLIC_API_URL}/locals/${userId}/menus`,
       { headers }
     );
 

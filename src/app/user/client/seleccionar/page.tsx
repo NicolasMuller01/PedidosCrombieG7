@@ -37,6 +37,7 @@ type Local = {
 };
 
 export default function () {
+
   const cookies = parseCookies();
   const userId = cookies.userId;
   const token = cookies.token;
@@ -195,7 +196,10 @@ export default function () {
             {busqueda === "" ? 
             validLocal.map((data) => (
               <button onClick={() => saveDataLocal(data)}>
-                <Link href={`/user/client/seleccionar/${data.id}`}>
+                <Link href={{
+            pathname: `/user/client/seleccionar/${data.id}`,
+            query: {localname: data.localName, description: data.description}
+            }}>
                   <div
                     className="flex items-center justify-between border rounded-xl p-4 m-2 shadow-xl transition-transform hover:scale-[1.05] duration-500"
                     key={data.id}
@@ -221,7 +225,10 @@ export default function () {
           :
           filtredData?.map((data) => (
             <button onClick={() => saveDataLocal(data)}>  
-              <Link href={`/user/client/seleccionar/${data.id}`}>
+              <Link href={{
+            pathname: `/user/client/seleccionar/${data.id}`,
+            query: {localname: data.localName, description: data.description}
+            }}>
                 <div
                   className="flex items-center justify-between border shadow-xl transition-transform hover:scale-[1.05] duration-500 rounded-xl p-4"
                   key={data.id}
@@ -247,13 +254,16 @@ export default function () {
           </>
         )}
       </div>
-      <h3 className="text-2xl font-light text-center m-10">Locales que poseen la comida que buscas</h3>
+      <h3 className="text-2xl  m-10 font-ligth text-center">Locales que poseen la comida que buscas</h3>
       {validMenu ? 
        validMenu.map((data) => (
         <button onClick={() => saveDataLocal(data)}>  
-          <Link href={`/user/client/seleccionar/${data.id}`}>
+          <Link href={{
+            pathname: `/user/client/seleccionar/${data.id}`,
+            query: {localname: data.localName, description: data.description}
+            }}>
             <div
-              className="bg-gray-500 flex items-center justify-between border shadow-xl transition-transform hover:scale-[1.05] duration-500 rounded-xl p-4"
+              className="bg-gray-200 mt-5 flex items-center justify-between border shadow-xl transition-transform hover:scale-[1.05] duration-500 rounded-xl p-4"
               key={data.id}
             >
               <img

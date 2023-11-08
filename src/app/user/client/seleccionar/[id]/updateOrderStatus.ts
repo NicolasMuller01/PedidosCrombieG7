@@ -1,28 +1,14 @@
 import { parseCookies } from "nookies";
 import axios from "axios";
 
-type DataBody = {
-  clientId: string;
-  restaurantId: string;
-};
-
-type Eatable = {
-  idEatable: string;
-  title: string;
-  description: string;
-  photo: string;
-  price: number;
-  name: string;
-  menuType: string;
-  quantity?: number;
-};
 
 type typeStatus = 
   | 'WAITING'      
   | 'SEND'         
   | 'CANCELLED' 
   | 'ACCEPTED'    
-  | 'DELIVERED';  
+  | 'DELIVERED'  
+  | 'RECEIVED'
 
 export const updateOrderStatus = async (id: string, statusValue: typeStatus) => {
 
@@ -37,15 +23,14 @@ export const updateOrderStatus = async (id: string, statusValue: typeStatus) => 
     };
 
     const response = await axios.patch(
-      `https://pedidos-crombie-production.up.railway.app/orders/${id}/status`,
+      `${process.env.NEXT_PUBLIC_API_URL}/orders/${id}/status`,
       {status: statusValue},
       {
         headers: config.headers,
       }
     );
     if (response.status === 200) {
-      console.log(statusValue);
-      
+
       return statusValue; 
     }
   } catch (error: any) {

@@ -44,7 +44,7 @@ export default function LoginForm() {
   const onSubmit = handleSubmit(async (information, e) => {
     e?.preventDefault();
     try {
-      const response = await fetch("https://pedidos-crombie-production.up.railway.app/auth/login", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

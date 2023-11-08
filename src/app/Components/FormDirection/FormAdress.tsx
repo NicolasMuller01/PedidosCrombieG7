@@ -32,6 +32,7 @@ const schemaAddress = yup.object().shape({
 type crudTypes = 'CREATE' | 'UPDATE' | 'DELETE';
 
 export default function FormAdress({ type, typeCrud}: { type: string, typeCrud: crudTypes }) {
+
   const cookies = parseCookies();
   const userId = cookies.userId;
   const token = cookies.token;
@@ -66,7 +67,7 @@ export default function FormAdress({ type, typeCrud}: { type: string, typeCrud: 
     if (type === "CLIENT" && typeCrud === 'CREATE') {
       try {
         const response = await fetch(
-          `https://pedidos-crombie-production.up.railway.app/clients/${userId}/adress`,
+          `${process.env.NEXT_PUBLIC_API_URL}/clients/${userId}/adress`,
           {
             method: "PATCH",
             headers: {
@@ -78,6 +79,8 @@ export default function FormAdress({ type, typeCrud}: { type: string, typeCrud: 
         );
         if (response.ok) {
           const responseData = await response.json();
+          console.log(response);
+          
           setData(responseData);
           toast.success("Cuenta creada con exito")
           router.push("/user/client")
@@ -91,7 +94,7 @@ export default function FormAdress({ type, typeCrud}: { type: string, typeCrud: 
     } else if (type === "LOCAL" && typeCrud === "CREATE") {
       try {
         const response = await fetch(
-          `https://pedidos-crombie-production.up.railway.app/locals/${userId}/address`,
+          `${process.env.NEXT_PUBLIC_API_URL}/locals/${userId}/address`,
           {
             method: "PATCH",
             headers: {

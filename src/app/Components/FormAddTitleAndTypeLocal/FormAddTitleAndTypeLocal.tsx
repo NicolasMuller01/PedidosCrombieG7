@@ -56,7 +56,7 @@ export const FormAddTitleAndTypeLocal = ({ typeCrud }: { typeCrud: crudTypes}) =
     e?.preventDefault();
     information.type = typeLocal;
       try {
-        const response = await fetch(`https://pedidos-crombie-production.up.railway.app/locals/${userId}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/locals/${userId}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

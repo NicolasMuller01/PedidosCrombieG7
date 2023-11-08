@@ -4,6 +4,8 @@ import NavGeneral from "./Components/NavGeneral";
 import ButtonStage from "./Components/ButtonStage";
 
 export default function Home() {
+  require('dotenv').config();
+
   return (
     <div className="">
       <NavGeneral />

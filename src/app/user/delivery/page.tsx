@@ -17,7 +17,7 @@ const page = () => {
         </div>
     </a>
 
-    <a href="/Delivery/historial">
+    <a href="/user/delivery/ordersdelivered">
         <div className="col-span-1 bg-info mb-3 p-2 rounded-md hover:-translate-y-1 hover:scale-105 hover:bg-indigo-500 duration-300">
             <div className="flex flex-col items-center justify-center p-3">
                 <h4 className="text-white font-semibold text-2xl md:text-lg">Pedidos tomados</h4>
