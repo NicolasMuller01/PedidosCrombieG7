@@ -10,7 +10,7 @@ type MyCustomType = {
   totalPrice: number;
 };
 
-export default function () {
+const Page = () => {
   const [deliveryOrders, setdeliveryOrders] = useState<MyCustomType[]>([]);
 
   useEffect(() => {
@@ -63,3 +63,4 @@ export default function () {
     </div>
   );
 }
+export default Page

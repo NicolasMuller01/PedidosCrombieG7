@@ -1,4 +1,4 @@
-export default function () {
+const Page = () => {
     return (
         <div className="container mx-auto max-w-screen-lg pl-5 pr-5 m-28">
             <h1 className="text-center text-2xl font-bold pb-5">BIENVENIDO QUE DESEA DISFRUTAR HOY!</h1>
@@ -95,3 +95,5 @@ export default function () {
         </div>
     );
 }
+
+export default Page

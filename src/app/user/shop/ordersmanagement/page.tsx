@@ -65,7 +65,7 @@ const Page = () => {
         <h3 className='text-2xl font-normal'>Ordenes pendientes</h3>
         {orders != undefined ? (
         orders.map((o) => (
-          <div className="flex justify-between border border-black rounded-xl mt-5 max-w-3xl p-5">
+          <div key={o.id} className="flex justify-between border border-black rounded-xl mt-5 max-w-3xl p-5">
             <div className="flex justify-center align-middle flex-col">
               <p className='text-xl'>Id del pedido: </p>
               <p>{o.id}</p>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default function () {
+const Page = () => {
   return (
     <div className="mt-28">
       <div className="container mx-auto max-w-screen-lg pl-20 pr-20 ">
@@ -47,3 +47,4 @@ export default function () {
     </div>
   );
 };
+export default Page
