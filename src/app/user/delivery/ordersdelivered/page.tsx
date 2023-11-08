@@ -1,10 +1,8 @@
 "use client";
-import { getOrdersFromLocal } from "@/app/hooks/getOrdersFromLocal";
-import Link from "next/link";
+
 import React, { useEffect, useState } from "react";
 import { updateOrderStatus } from "../../client/seleccionar/[id]/updateOrderStatus";
 import { toast } from "sonner";
-import InputFindCity from "@/app/Components/InputFindCity/InputFindCity";
 import { patchOrderDelivery } from "@/app/hooks/patchOrderDelivery";
 import { parseCookies } from "nookies";
 import { getOrdersFromDelivery } from "@/app/hooks/getOrdersFromDelivery";
@@ -19,7 +17,7 @@ type Order = {
 
 type StatusType = "RECEIVED";
 
-const page = () => {
+const Page = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const cookies = parseCookies();  
   const idRol = cookies.userId;
@@ -93,4 +91,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

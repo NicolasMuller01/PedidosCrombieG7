@@ -1,6 +1,6 @@
 "use client";
-import { getOrdersFromLocal } from "@/app/hooks/getOrdersFromLocal";
-import Link from "next/link";
+
+
 import React, { useEffect, useState } from "react";
 import { updateOrderStatus } from "../../client/seleccionar/[id]/updateOrderStatus";
 import { toast } from "sonner";
@@ -29,7 +29,7 @@ type Order = {
 
 type StatusType = "DELIVERED";
 
-const page = () => {
+const Page = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const cookies = parseCookies();  
   const idRol = cookies.userId;
@@ -96,4 +96,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -24,7 +24,7 @@ type MenuItem = {
 
   type StatusType = 'ACCEPTED' | 'CANCELLED'  
 
-const page = () => {
+const Page = () => {
 
     const [orders, setOrders] = useState<OrderItem[]>([])
 
@@ -101,4 +101,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
