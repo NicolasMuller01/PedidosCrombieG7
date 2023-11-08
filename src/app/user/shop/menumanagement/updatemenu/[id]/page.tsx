@@ -5,7 +5,7 @@ import React from 'react'
 import FormMenu from "@/app/Components/FormMenu/FormMenu";
 import { setCookie } from 'nookies';
 
-const page = () => {
+const Page = () => {
 const id = useParams().id;
 
 setCookie(null, 'menuId', id.toString(), {
@@ -21,4 +21,4 @@ setCookie(null, 'menuId', id.toString(), {
   )
 }
 
-export default page
+export default Page
