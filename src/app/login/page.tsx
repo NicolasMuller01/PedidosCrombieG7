@@ -1,14 +1,13 @@
 'use client'
 
-import React from 'react'
 import LoginForm from '../Components/Login/LoginForm';
 
-const Page = () => {
+const page = () => {
   return (
-    <div className='m-10'>
+    <div className='m-10 mt-28'>
       <LoginForm/>
     </div>
   )
-};
+}
 
-export default Page;
+export default page
