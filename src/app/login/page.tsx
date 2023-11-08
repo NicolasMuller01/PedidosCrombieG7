@@ -1,7 +1,7 @@
 import React from 'react'
 import { Login } from '../Components/Login/Login'
 
-export const LoginPage = () => {
+export const Page= () => {
   return (
     <div className='m-10'>
         <Login/>
@@ -9,4 +9,4 @@ export const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default Page
