@@ -36,7 +36,7 @@ type Local = {
   address: Address;
 };
 
-export default function () {
+const Page = () => {
 
   const cookies = parseCookies();
   const userId = cookies.userId;
@@ -289,3 +289,5 @@ export default function () {
     </div>
   );
 }
+
+export default Page

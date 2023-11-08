@@ -1,4 +1,4 @@
-export default function(){
+const Page = () =>{
     return(
         <div className="container mx-auto max-w-screen-lg pl-20 pr-20 m-28">
 
@@ -37,3 +37,5 @@ export default function(){
         </div>
     );
 }
+
+export default Page

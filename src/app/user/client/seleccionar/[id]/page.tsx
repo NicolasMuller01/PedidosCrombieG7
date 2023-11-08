@@ -22,7 +22,7 @@ type Eatable = {
   quantity?: number;
 };
 
-export default function () {
+const Page = () => {
   const cookies = parseCookies();
   const idRol = cookies.userId;
   const router = useRouter()
@@ -277,3 +277,5 @@ export default function () {
     </div>
   );
 }
+
+export default Page

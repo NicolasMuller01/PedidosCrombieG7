@@ -12,7 +12,7 @@ type Order = {
   totalPrice: number;
 };
 
-export default function () {
+const Page = () => {
   const [localOrders, setlocalOrders] = useState<Order[]>([]);
 
   useEffect(() => {
@@ -66,3 +66,4 @@ export default function () {
     </div>
   );
 }
+export default Page
