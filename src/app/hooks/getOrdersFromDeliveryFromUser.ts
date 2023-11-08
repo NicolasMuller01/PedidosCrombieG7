@@ -3,7 +3,7 @@ import { parseCookies } from 'nookies';
 
 
 
-export const getOrdersFromDeliveryFromUser  = async (name: string) => {
+export const getOrdersFromDeliveryFromUser  = async (name: string | null) => {
 
 const cookies = parseCookies();
 const userId = cookies.userId;

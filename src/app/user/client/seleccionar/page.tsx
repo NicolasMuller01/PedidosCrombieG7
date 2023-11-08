@@ -64,7 +64,7 @@ export default function () {
     fetchData();
   }, []);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const bsq = e.target.value
     setBusqueda(bsq);
     handleSearch()
@@ -102,7 +102,7 @@ export default function () {
     setValidMenu(filteredData); 
   }
 
-  const saveDataLocal = (data) => {
+  const saveDataLocal = (data: any) => {
     setCookie(null, 'localName', data.localName , {
       maxAge: 60 * 60 * 24 * 7, 
       path: '/',

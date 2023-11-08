@@ -27,7 +27,7 @@ const schemaMenu = yup.object().shape({
 
 type typeCrud = "CREATE" | "UPDATE" | "DELETE"
 
-export default function FormMenu({counter, typeCrud} : {counter:any,  typeCrud: typeCrud}) {
+export default function FormMenu({counter, typeCrud} : {counter?:any,  typeCrud: typeCrud}) {
 
   const router = useRouter()
 

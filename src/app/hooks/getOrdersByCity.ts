@@ -2,7 +2,7 @@ import axios from "axios";
 import { parseCookies } from "nookies";
 import { toast } from "sonner";
 
-export const getOrdersFromCity = async (state, city) => {
+export const getOrdersFromCity = async (state: any, city:any) => {
 
   const cookies = parseCookies();
   const userId = cookies.userId;

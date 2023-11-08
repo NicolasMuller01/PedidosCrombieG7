@@ -22,7 +22,7 @@ const schemaMenu = yup.object().shape({
   
   });
 
-export default function ReviewFormDelivery({name}:{name: string}) {
+export default function ReviewFormDelivery({name}:{name: string | null}) {
   const [rating, setRating] = useState(0);
 
   const {
@@ -33,7 +33,7 @@ export default function ReviewFormDelivery({name}:{name: string}) {
     resolver: yupResolver(schemaMenu),
   });
 
-  const handleRatingChange = (value) => {
+  const handleRatingChange = (value: any) => {
     setRating(value);
   };
 

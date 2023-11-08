@@ -1,8 +1,8 @@
 import { User } from '@/app/types/User'
-import { Order } from '@/app/types/Order'
+import { Vehicle } from './Vehicle'
 
 export type Delivery = {
-    ordersHistory:Order[],
+    ordersHistory:any[],
     vehicle: Vehicle,
     acount: string,
     punctuation: number,

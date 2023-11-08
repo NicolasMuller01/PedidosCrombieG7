@@ -20,7 +20,7 @@ const token = cookies.token;
 
     const response = await axios.get(apiUrl, config);
     const arr = await response.data.ordersHistory;
-    const values = await arr.filter((item) => item.status === 'WAITING');
+    const values = await arr.filter((item: any) => item.status === 'WAITING');
     return values
 
   } catch (error) {
