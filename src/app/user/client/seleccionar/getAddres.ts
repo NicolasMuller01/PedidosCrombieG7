@@ -1,17 +1,14 @@
 import { parseCookies, setCookie } from "nookies";
+import axios from "axios";
 
-const cookies = parseCookies();
-const userId = cookies.userId;
-const token = cookies.token;
-
-const axios = require("axios");
 
 export const getAddress = async () => {
-  try {
-    if (!userId) {
-      throw new Error("userId no está definido");
-    }
 
+  const cookies = parseCookies();
+  const userId = cookies.userId;
+  const token = cookies.token;
+
+  try {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -19,7 +16,7 @@ export const getAddress = async () => {
     };
 
     const response = await axios.get(
-      `https://pedidos-crombie-production.up.railway.app/clients/${userId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/clients/${userId}`,
       config
     );
 

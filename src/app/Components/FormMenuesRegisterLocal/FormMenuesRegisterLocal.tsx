@@ -19,6 +19,7 @@ export const FormMenuesRegisterLocal = ({ typeCrud }: { typeCrud: crudTypes}) =>
             receivedNumber != 0 ? toast.success(`has agregado 1 menu, faltan ${3 - receivedNumber}`) : null
             return <FormMenu typeCrud={typeCrud} counter={handleCounter}/>
         }else{
+          toast.success("Has ingresado todos los menues correctamente")
           return <FormAddTitleAndTypeLocal typeCrud='CREATE'/>
         }
     }

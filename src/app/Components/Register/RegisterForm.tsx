@@ -65,7 +65,7 @@ export default function RegisterForm() {
     setData(rol)
     //enviar estos datos a la api para crear el objeto
     try {
-      const response =  fetch('https://pedidos-crombie-production.up.railway.app/auth/register', {
+      const response =  fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
         method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -20,7 +20,7 @@ export const  patchOrderDelivery = async (idOrder: string, idRol: string) => {
     };
 
     const response = await axios.patch(
-      `https://pedidos-crombie-production.up.railway.app/orders/${idOrder}/delivery/${idRol}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/orders/${idOrder}/delivery/${idRol}`,
       {},
       config
     );

@@ -31,7 +31,7 @@ export const  patchAddressIntoOrder = async (id: string, address: Address) => {
     };
 
     const response = await axios.patch(
-      `https://pedidos-crombie-production.up.railway.app/orders/${id}/address`,
+      `${process.env.NEXT_PUBLIC_API_URL}/orders/${id}/address`,
       address,
       {
         headers: config.headers,
@@ -39,7 +39,6 @@ export const  patchAddressIntoOrder = async (id: string, address: Address) => {
     );
     if (response.status === 200) { 
       return address;
-      
     } 
   } catch (error: any) {
     console.error("Error al obtener la dirección:", error.message);

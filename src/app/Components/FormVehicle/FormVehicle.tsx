@@ -53,7 +53,7 @@ export default function FormVehicle({ typeCrud }: { typeCrud: crudTypes}) {
     
     try {
       const response = await fetch(
-        `https://pedidos-crombie-production.up.railway.app/vehicles/${userId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/vehicles/${userId}`,
         {
           method: "POST",
           headers: {

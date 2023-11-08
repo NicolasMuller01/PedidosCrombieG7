@@ -15,7 +15,7 @@ export const getEatablesById = async (id: string) => {
     };
 
     const response = await axios.get(
-      `https://pedidos-crombie-production.up.railway.app/locals/${id}/menus`,
+      `${process.env.NEXT_PUBLIC_API_URL}/locals/${id}/menus`,
       config
     );
 

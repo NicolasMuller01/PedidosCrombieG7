@@ -11,6 +11,7 @@ type DataBody = {
 };
 
 export const postOrder = async (bodyData: DataBody) => {
+  
   try {
     const config = {
       headers: {
@@ -19,7 +20,7 @@ export const postOrder = async (bodyData: DataBody) => {
     };
 
     const response = await axios.post(
-      `https://pedidos-crombie-production.up.railway.app/orders`,
+      `${process.env.NEXT_PUBLIC_API_URL}/orders`,
       bodyData, 
       config
     );
