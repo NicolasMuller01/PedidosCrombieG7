@@ -1,10 +1,10 @@
-"use client";
-import { useEffect, useState } from "react";
-import { getAddress } from "./getAddres";
-import { getLocalByCity } from "./getLocalByCity";
-import { parseCookies, setCookie } from "nookies";
-import Link from "next/link";
-import { array } from "yup";
+'use client';
+
+import { useEffect, useState } from 'react';
+import { getAddress } from './getAddres';
+import { getLocalByCity } from './getLocalByCity';
+import { parseCookies, setCookie } from 'nookies';
+import Link from 'next/link';
 
 type Menu = {
   idEatable: string;
@@ -37,18 +37,14 @@ type Local = {
 };
 
 const Page = () => {
-
   const cookies = parseCookies();
   const userId = cookies.userId;
   const token = cookies.token;
 
   const [validLocal, setValidLocal] = useState<Local[]>();
-
   const [validMenu, setValidMenu] = useState<Local[]>();
-
   const [filtredData, setFiltredData] = useState<Local[]>();
-
-  const [busqueda, setBusqueda] = useState("");
+  const [busqueda, setBusqueda] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,59 +54,56 @@ const Page = () => {
         const fetchedCity = await getLocalByCity({ country, state, city });
         setValidLocal(fetchedCity);
       } catch (error: any) {
-        console.error("Error al obtener la dirección:", error.message);
+        console.error('Error al obtener la dirección:', error.message);
       }
     };
     fetchData();
   }, []);
 
   const handleInputChange = (e: any) => {
-    const bsq = e.target.value
+    const bsq = e.target.value;
     setBusqueda(bsq);
-    handleSearch()
-    nameMenuSelected()
+    handleSearch();
+    nameMenuSelected();
   };
 
   const handleSearch = async () => {
-
-    const element = validLocal?.filter( (parametros) => {
-      if(parametros.localName.toLowerCase().includes(busqueda.toLowerCase())){        
-        return parametros
+    const element = validLocal?.filter((parametros) => {
+      if (parametros.localName.toLowerCase().includes(busqueda.toLowerCase())) {
+        return parametros;
       }
-    })
-    setFiltredData(element); 
+    });
+    setFiltredData(element);
   };
 
-  const nameMenuSelected = () =>{
-
-    const arr: Local[] = []
-
-    const element = validLocal?.filter( (parametros) => {
-      parametros.menus.forEach(element => {    
-        if(element.name.toLowerCase().includes(busqueda.toLowerCase())){       
-          arr.push(parametros)
+  const nameMenuSelected = () => {
+    const arr: Local[] = [];
+    const element = validLocal?.filter((parametros) => {
+      parametros.menus.forEach((element) => {
+        if (element.name.toLowerCase().includes(busqueda.toLowerCase())) {
+          arr.push(parametros);
         }
       });
-    }) 
+    });
 
     const filteredData = arr.filter((item, index, self) => {
       const lowerCaseName = item.localName.toLowerCase();
-      // Comparamos en minúsculas
-      return self.findIndex((i) => i.localName.toLowerCase() === lowerCaseName) === index;
+      return (
+        self.findIndex((i) => i.localName.toLowerCase() === lowerCaseName) === index
+      );
     });
 
-    setValidMenu(filteredData); 
-  }
+    setValidMenu(filteredData);
+  };
 
   const saveDataLocal = (data: any) => {
-    setCookie(null, 'localName', data.localName , {
-      maxAge: 60 * 60 * 24 * 7, 
+    setCookie(null, 'localName', data.localName, {
+      maxAge: 60 * 60 * 24 * 7,
       path: '/',
     });
-  }
+  };
 
   return (
-
     <div className="container mx-auto max-w-screen-lg pl-10 pr-10 m-28">
       <div className="flex justify-between items-center mt-5">
         <input
@@ -123,114 +116,158 @@ const Page = () => {
 
       <div className="grid grid-cols-3  md:grid-cols-6 gap-4 pt-5">
         <div className="md:col-span-1 bg-orange-400 rounded-xl p-2 hover:bg-indigo-500 duration-300">
-     
-            <div className="flex flex-col items-center justify-center">
-              <img src="/UserLanding/burguer.svg" className="w-1/2" alt="" />
-              <h3 className="text-base font-bold text-white">Restaurante</h3>
-            </div>
-      
+          <div className="flex flex-col items-center justify-center">
+            <img src="/UserLanding/burguer.svg" className="w-1/2" alt="" />
+            <h3 className="text-base font-bold text-white">Restaurante</h3>
+          </div>
         </div>
 
-        <div className="md:col-span-1 bg-green-500 rounded-xl p-2 hover:bg-indigo-500 duration-300">
-         
-            <div className="flex flex-col items-center justify-center">
-              <img src="/UserLanding/groceries.svg" className="w-1/2" alt="" />
-              <h3 className="text-base md:text-xl font-bold text-white">
-                Supermercado
-              </h3>
-            </div>
-      
+        <div className="md:col-span-1 bg-green-500 rounded-xl p-2 hover-bg-indigo-500 duration-300">
+          <div className="flex flex-col items-center justify-center">
+            <img src="/UserLanding/groceries.svg" className="w-1/2" alt="" />
+            <h3 className="text-base md:text-xl font-bold text-white">
+              Supermercado
+            </h3>
+          </div>
         </div>
 
         <div className="md:col-span-1 bg-yellow-500 mb-0 p-2 rounded-md hover:bg-indigo-500 duration-300">
-  
-            <div className="flex flex-col items-center justify-center">
-              <img src="/UserLanding/iceCream.svg" className="w-1/2" alt="" />
-              <h3 className="text-base md:text-xl font-bold text-white">
-                Heladeria
-              </h3>
-            </div>
-
+          <div className="flex flex-col items-center justify-center">
+            <img src="/UserLanding/iceCream.svg" className="w-1/2" alt="" />
+            <h3 className="text-base md:text-xl font-bold text-white">Heladeria</h3>
+          </div>
         </div>
 
-        <div className="md:col-span-1 bg-green-500 mb-0 p-2 rounded-md hover:bg-indigo-500 duration-300">
-       
-            <div className="flex flex-col items-center justify-center h-full">
-              <img src="/UserLanding/drinks.svg" className="w-1/2" alt="" />
-              <h3 className="text-base md:text-xl font-bold text-white">
-                Bebida
-              </h3>
-            </div>
-    
+        <div className="md:col-span-1 bg-green-500 mb-0 p-2 rounded-md hover-bg-indigo-500 duration-300">
+          <div className="flex flex-col items-center justify-center h-full">
+            <img src="/UserLanding/drinks.svg" className="w-1/2" alt="" />
+            <h3 className="text-base md:text-xl font-bold text-white">Bebida</h3>
+          </div>
         </div>
 
-        <div className="md:col-span-1 bg-red-500 mb-0 p-2 rounded-md hover:bg-indigo-500 duration-300">
-  
-            <div className="flex flex-col items-center  justify-center">
-              <img src="/UserLanding/bakery.svg" className="w-1/2" alt="" />
-              <h3 className="text-base md:text-xl font-bold text-white">
-                Panaderia
-              </h3>
-            </div>
-
+        <div className="md:col-span-1 bg-red-500 mb-0 p-2 rounded-md hover-bg-indigo-500 duration-300">
+          <div className="flex flex-col items-center  justify-center">
+            <img src="/UserLanding/bakery.svg" className="w-1/2" alt="" />
+            <h3 className="text-base md:text-xl font-bold text-white">Panaderia</h3>
+          </div>
         </div>
 
-        <div className="md:col-span-1 bg-purple-500 p-2 mb-0 text-center rounded-md hover:bg-indigo-500 duration-300">
-            <div className="flex flex-col items-center justify-center">
-              <img src="/UserLanding/pharmacy.svg" className="w-1/2" alt="" />
-              <h3 className="text-base md:text-xl font-bold text-white">
-                Farmacia
-              </h3>
-            </div>
+        <div className="md:col-span-1 bg-purple-500 p-2 mb-0 text-center rounded-md hover-bg-indigo-500 duration-300">
+          <div className="flex flex-col items-center justify-center">
+            <img src="/UserLanding/pharmacy.svg" className="w-1/2" alt="" />
+            <h3 className="text-base md:text-xl font-bold text-white">Farmacia</h3>
+          </div>
         </div>
       </div>
 
-      <div className="space-y-4 mt-5 mb-5 ">
+      <div className="space-y-4 mt-5 mb-5">
         {!validLocal ? (
           <div className="items-center mx-auto">
-            <p className="text-3xl text-red-500 font-bold text-center m-10">No se han encontrado locales en tu zona</p>
+            <p className="text-3xl text-red-500 font-bold text-center m-10">
+              No se han encontrado locales en tu zona
+            </p>
           </div>
         ) : (
           <>
-          <h3 className="text-2xl  m-10 font-ligth text-center">Locales disponibles en tu ciudad</h3>
-            {busqueda === "" ? 
-            validLocal.map((data) => (
-              <button onClick={() => saveDataLocal(data)}>
-                <Link href={{
-            pathname: `/user/client/seleccionar/${data.id}`,
-            query: {localname: data.localName, description: data.description}
-            }}>
-                  <div
-                    className="flex items-center justify-between border rounded-xl p-4 m-2 shadow-xl transition-transform hover:scale-[1.05] duration-500"
+            <h3 className="text-2xl  m-10 font-light text-center">
+              Locales disponibles en tu ciudad
+            </h3>
+            {busqueda === ''
+              ? validLocal.map((data) => (
+                  <button
                     key={data.id}
+                    onClick={() => saveDataLocal(data)}
                   >
-                    <img
-                      src="/UserLanding/restaurant.svg"
-                      className="w-1/12 border rounded-full p-1"
-                      alt=""
-                    />
-                    <div>
-                      <h1 className="text-xl font-semibold">{data.localName}</h1>
-                      <p>Descuento 20%</p>
-                      <p>15-20min - Envio <b>GRATIS</b></p>
-                    </div>
-                    <div className="flex items-center justify-center gap-3">
-                      <img src="/UserLanding/star.svg" className="w-8" alt="" />
-                      <p className="text-lg">4</p>
-                    </div>
-                  </div>
-                </Link>
-              </button>
-            ))
-          :
-          filtredData?.map((data) => (
-            <button onClick={() => saveDataLocal(data)}>  
-              <Link href={{
-            pathname: `/user/client/seleccionar/${data.id}`,
-            query: {localname: data.localName, description: data.description}
-            }}>
+                    <Link
+                      href={{
+                        pathname: `/user/client/seleccionar/${data.id}`,
+                        query: {
+                          localname: data.localName,
+                          description: data.description,
+                        },
+                      }}
+                    >
+                      <div
+                        className="flex items-center justify-between border rounded-xl p-4 m-2 shadow-xl transition-transform hover:scale-[1.05] duration-500"
+                      >
+                        <img
+                          src="/UserLanding/restaurant.svg"
+                          className="w-1/12 border rounded-full p-1"
+                          alt=""
+                        />
+                        <div>
+                          <h1 className="text-xl font-semibold">
+                            {data.localName}
+                          </h1>
+                          <p>Descuento 20%</p>
+                          <p>15-20min - Envío <b>GRATIS</b></p>
+                        </div>
+                        <div className="flex items-center justify-center gap-3">
+                          <img src="/UserLanding/star.svg" className="w-8" alt="" />
+                          <p className="text-lg">4</p>
+                        </div>
+                      </div>
+                    </Link>
+                  </button>
+                ))
+              : filtredData?.map((data) => (
+                  <button
+                    key={data.id}
+                    onClick={() => saveDataLocal(data)}
+                  >
+                    <Link
+                      href={{
+                        pathname: `/user/client/seleccionar/${data.id}`,
+                        query: {
+                          localname: data.localName,
+                          description: data.description,
+                        },
+                      }}
+                    >
+                      <div
+                        className="flex items-center justify-between border shadow-xl transition-transform hover:scale-[1.05] duration-500 rounded-xl p-4"
+                        key={data.id}
+                      >
+                        <img
+                          src="/UserLanding/restaurant.svg"
+                          className="w-1/12 border rounded-full p-1"
+                          alt=""
+                        />
+                        <div>
+                          <h1>{data.localName}</h1>
+                          <p>Descuento 20%</p>
+                          <p>15-20min - Envío <b>GRATIS</b></p>
+                        </div>
+                        <div className="flex items-center justify-center gap-3">
+                          <img src="/UserLanding/star.svg" className="w-8" alt="" />
+                          <p className="text-lg">4</p>
+                        </div>
+                      </div>
+                    </Link>
+                  </button>
+                ))
+            }
+          </>
+        )}
+      </div>
+
+      <h3 className="text-2xl m-10 font-ligth text-center">
+        Locales que poseen la comida que buscas
+      </h3>
+      {validMenu
+        ? validMenu.map((data) => (
+            <button key={data.id} onClick={() => saveDataLocal(data)}>
+              <Link
+                href={{
+                  pathname: `/user/client/seleccionar/${data.id}`,
+                  query: {
+                    localname: data.localName,
+                    description: data.description,
+                  },
+                }}
+              >
                 <div
-                  className="flex items-center justify-between border shadow-xl transition-transform hover:scale-[1.05] duration-500 rounded-xl p-4"
+                  className="bg-gray-200 mt-5 flex items-center justify-between border shadow-xl transition-transform hover:scale-[1.05] duration-500 rounded-xl p-4"
                   key={data.id}
                 >
                   <img
@@ -241,7 +278,7 @@ const Page = () => {
                   <div>
                     <h1>{data.localName}</h1>
                     <p>Descuento 20%</p>
-                    <p>15-20min - Envio <b>GRATIS</b></p>
+                    <p>15-20min - Envío <b>GRATIS</b></p>
                   </div>
                   <div className="flex items-center justify-center gap-3">
                     <img src="/UserLanding/star.svg" className="w-8" alt="" />
@@ -250,44 +287,14 @@ const Page = () => {
                 </div>
               </Link>
             </button>
-          ))}
-          </>
-        )}
-      </div>
-      <h3 className="text-2xl  m-10 font-ligth text-center">Locales que poseen la comida que buscas</h3>
-      {validMenu ? 
-       validMenu.map((data) => (
-        <button onClick={() => saveDataLocal(data)}>  
-          <Link href={{
-            pathname: `/user/client/seleccionar/${data.id}`,
-            query: {localname: data.localName, description: data.description}
-            }}>
-            <div
-              className="bg-gray-200 mt-5 flex items-center justify-between border shadow-xl transition-transform hover:scale-[1.05] duration-500 rounded-xl p-4"
-              key={data.id}
-            >
-              <img
-                src="/UserLanding/restaurant.svg"
-                className="w-1/12 border rounded-full p-1"
-                alt=""
-              />
-              <div>
-                <h1>{data.localName}</h1>
-                <p>Descuento 20%</p>
-                <p>15-20min - Envio <b>GRATIS</b></p>
-              </div>
-              <div className="flex items-center justify-center gap-3">
-                <img src="/UserLanding/star.svg" className="w-8" alt="" />
-                <p className="text-lg">4</p>
-              </div>
-            </div>
-          </Link>
-        </button>
-      ))
-      : <div className="text-red-400 text-xl font-bold text-center">no se ha encontrado ese menu en ningun local por tu zona</div>
-    }
+          ))
+        : <div className="text-red-400 text-xl font-bold text-center">
+            No se ha encontrado ese menú en ningun local de tu zona
+          </div>
+      }
     </div>
   );
-}
+};
 
-export default Page
+export default Page;
+

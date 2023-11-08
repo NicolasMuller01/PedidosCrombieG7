@@ -49,7 +49,7 @@ const Page = () => {
       <h3 className="text-2xl mt-20">Menues disponibles</h3>
       {menusValidData.length > 0 ? (
         menusValidData.map((data) => (
-          <div className="flex justify-between border border-black rounded-xl mt-5 max-w-2xl p-5">
+          <div key={data.idEatable} className="flex justify-between border border-black rounded-xl mt-5 max-w-2xl p-5">
             <div className="flex justify-start">
               <img
                 src={data.photo}
