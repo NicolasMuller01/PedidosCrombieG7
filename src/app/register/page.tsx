@@ -1,8 +1,9 @@
-import React from 'react'
+'use client'
+
 import { Register } from '../Components/Register/Register'
 
 
-export const page = () => {
+const page = () => {
   return (
     <div className='mt-20'>
         <Register/>
