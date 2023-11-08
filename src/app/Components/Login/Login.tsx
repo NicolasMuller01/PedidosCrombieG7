@@ -1,7 +1,7 @@
 import React from 'react'
 import LoginForm from './LoginForm'
 
-export const Login = () => {
+const Page = () => {
   return (
           <div className='h-screen flex justify-center items-center'>
             <LoginForm/>
@@ -9,3 +9,4 @@ export const Login = () => {
   )
 }
 
+export default Page;
