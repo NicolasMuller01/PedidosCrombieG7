@@ -72,7 +72,7 @@ export default function RegisterForm() {
                 },
                 body: JSON.stringify(information)
         })
-      if ((await response).ok) {
+      if (await response) {
         toast.success("te has registrado correctamente, ahora inicia sesion")
         router.push("/login")
       } 

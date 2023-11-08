@@ -3,18 +3,14 @@ import { parseCookies } from 'nookies';
 
 
 
-export const getOrdersFromDeliveryFromUser  = async (name: string) => {
+export const getAllOrdersFromLocal = async () => {
 
 const cookies = parseCookies();
 const userId = cookies.userId;
 const token = cookies.token;
 
-
   try {
-    
-console.log(name);
-
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/deliverys/${name}`;
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/locals/${userId}`;
 
     const config = {
       headers: {
@@ -23,19 +19,9 @@ console.log(name);
     };
 
     const response = await axios.get(apiUrl, config);
-    
-    console.log(response.data);
-    
-
-    if(response.status === 200) {
-      return response.data.ordersHistory;
-    }
+    return response.data
 
   } catch (error) {
     console.error('Error al hacer la solicitud:', error);
   }
 };
-
-
-
-

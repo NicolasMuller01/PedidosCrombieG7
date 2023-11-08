@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
@@ -28,12 +29,12 @@ const page = () => {
 
 
     <div className="col-span-1 bg-info mb-3 p-2 rounded-md hover:-translate-y-1 hover:scale-105 hover:bg-indigo-500 duration-300">
-        <a href="/perfil">
+        <Link href="/user/delivery/historial">
             <div className="flex flex-col items-center justify-center p-3">
-                <h4 className="text-white font-semibold text-2xl md:text-lg">Mi perfil</h4>
+                <h4 className="text-white font-semibold text-2xl md:text-lg">Historial pedidos entregados</h4>
                 <img className="w-2/5 md:w-8/12 p-4 pt-5" src="/Delivery/profile.svg" alt="" />
             </div>
-        </a>
+        </Link>
     </div>
 
 </div>
