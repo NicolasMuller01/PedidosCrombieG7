@@ -36,7 +36,7 @@ const ButtonStageClient = () => {
       const values = (await response.ordersHistory) || [];
 
       const filteredOrders = values.filter(
-        (order) => order.status === "DELIVERED"
+        (order: any) => order.status === "DELIVERED"
       );
       setOrders(filteredOrders);
     } catch (error) {

@@ -38,7 +38,7 @@ const page = () => {
   }, []);
 
 
-  const tomarPedidoFuncion = async (idOrder) => {
+  const tomarPedidoFuncion = async (idOrder: any) => {
     try {
       const value = await updateOrderStatus(idOrder, "RECEIVED");
       try {

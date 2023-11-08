@@ -33,7 +33,7 @@ export default function ReviewFormLocal({name}:{name: string}) {
     resolver: yupResolver(schemaMenu),
   });
 
-  const handleRatingChange = (value) => {
+  const handleRatingChange = (value: any) => {
     setRating(value);
   };
 

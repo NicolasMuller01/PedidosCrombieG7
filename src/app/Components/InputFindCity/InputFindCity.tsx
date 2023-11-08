@@ -5,8 +5,8 @@ import SelectInputProvincia from "../FormDirection/SelectInputProvincia";
 import SelectInputCiudades from "../FormDirection/SelectFormCiudades";
 import { getOrdersFromCity } from "@/app/hooks/getOrdersByCity";
 
-const InputFindCity = ({ handleData }) => {
-  const [provincia, setProvincia] = useState({ provincia: "MISIONES", id: 54 });
+const InputFindCity = ({ handleData } : {handleData: any}) => {
+  const [provincia, setProvincia] = useState({ provincia: "MISIONES", id: "54" });
   const [ciudad, setCiudad] = useState("APOSTOLES");
 
   function handleSelectChangeProvincia(value: any) {

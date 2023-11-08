@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-export const getLocalByCity = async ({ country, state, city }) => {
+export const getLocalByCity = async ({ country, state, city } : {country: any, state: any, city: any}) => {
 
   const cookies = parseCookies();
 const userId = cookies.userId;

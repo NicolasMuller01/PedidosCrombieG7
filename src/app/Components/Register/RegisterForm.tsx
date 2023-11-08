@@ -3,12 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
 import { useState } from 'react';
-import { RegisterRepartidor } from './RegisterRepartidor/RegisterRepartidor';
-import { RegisterLocal } from "./RegisterLocal/RegisterLocal";
 import { User } from "@/app/types/User"
 import SelectInputUserType from "../SelectInputUserType/SelectInputUserType";
 import { toast } from "sonner";
-import router from "next/router";
 import { useRouter } from "next/navigation";
 
 

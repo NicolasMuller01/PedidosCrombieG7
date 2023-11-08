@@ -35,7 +35,7 @@ const page = () => {
   const idRol = cookies.userId;
 
   
-  const handleDataOrders = (data) => {  
+  const handleDataOrders = (data: any) => {  
     setOrders(data);
     if (data.length > 0) {
       toast.success("Se han encontrado pedidos");
@@ -44,7 +44,7 @@ const page = () => {
     }
   };
 
-  const tomarPedidoFuncion = async (idOrder) => {
+  const tomarPedidoFuncion = async (idOrder: any) => {
     try {
       const value = await updateOrderStatus(idOrder, "DELIVERED");
       try {

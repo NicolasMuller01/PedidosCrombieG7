@@ -38,7 +38,7 @@ export default function FormAdress({ type, typeCrud}: { type: string, typeCrud: 
   const token = cookies.token;
   const router = useRouter()
 
-  const [provincia, setProvincia] = useState({ provincia: "MISIONES", id: 54 });
+  const [provincia, setProvincia] = useState({ provincia: "MISIONES", id: "54" });
   const [ciudad, setCiudad] = useState("APOSTOLES");
   const [data, setData] = useState();
 
