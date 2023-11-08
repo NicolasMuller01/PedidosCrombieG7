@@ -10,9 +10,6 @@ export const  patchOrderDelivery = async (idOrder: string, idRol: string) => {
     const cookies = parseCookies();
     const token = cookies.token;
 
-    console.log(idRol);
-    
-
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
