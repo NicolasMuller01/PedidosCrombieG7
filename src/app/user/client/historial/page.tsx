@@ -32,7 +32,7 @@ type MyCustomType = {
   totalPrice: number;
 };
 
-export default function () {
+const Page = () => {
   const checkStatus = (status: string) => {
     if (status === 'WAITING') {
       return <span className="mx-1 inline text-gray-800">generando pedido</span>;
@@ -138,3 +138,4 @@ export default function () {
     </div>
   );
 }
+export default Page;
