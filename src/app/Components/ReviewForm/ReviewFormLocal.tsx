@@ -22,7 +22,7 @@ const schemaMenu = yup.object().shape({
   
   });
 
-export default function ReviewFormLocal({name}:{name: string}) {
+export default function ReviewFormLocal({name}:{name: string | null}) {
   const [rating, setRating] = useState(0);
 
   const {
