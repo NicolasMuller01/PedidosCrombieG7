@@ -57,19 +57,19 @@ const Page = () => {
       <h3 className="text-2xl font-normal mt-10">Ordenes en posesion</h3>
       {orders.length > 0 ? (
         orders.map((o) => (
-          <div key={o.id} className="flex justify-between border border-black rounded-xl mt-5 max-w-3xl p-5">
+          <div key={o.id} className="flex justify-between border border-black rounded-xl mt-5 max-w-3xl p-5 flex-col sm:flex-row text-center">
             <div className="flex justify-center align-middle flex-col">
-              <p className="text-xl">Id del pedido: </p>
-              <p>{o.id}</p>
+              <p className="text-xs sm:text-xl">Id del pedido: </p>
+              <p className="text-xs sm:text-xl">{o.id}</p>
             </div>
-            <div className="flex justify-start">
+            <div className="flex justify-start flex-col sm:flex-row">
               <div className="flex justify-center align-middle flex-col">
-                <p>Fecha</p>
-                <p>{o.date}</p>
+                <p className="text-xs sm:text-xl">Fecha</p>
+                <p className="text-xs sm:text-xl">{o.date}</p>
               </div>
-              <div className="flex justify-center align-middle flex-col">
-                <p>Estado</p>
-                <p>{o.status}</p>
+              <div className="flex justify-center align-middle flex-col p-5">
+                <p className="text-xs sm:text-xl">Estado</p>
+                <p className="text-xs sm:text-xl">{o.status}</p>
               </div>
               <div className="flex justify-center align-middle flex-col">
               <button
@@ -80,8 +80,6 @@ const Page = () => {
               </button>
             </div>
             </div>
-
-           
           </div>
         ))
       ) : (

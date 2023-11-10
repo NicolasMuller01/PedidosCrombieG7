@@ -34,17 +34,31 @@ type MyCustomType = {
 
 const Page = () => {
   const checkStatus = (status: string) => {
-    if (status === 'WAITING') {
-      return <span className="mx-1 inline text-gray-800">generando pedido</span>;
-    } else if (status === 'SEND') {
-      return <span className="mx-1 inline text-gray-400">En espera del restaurante</span>;
-    } else if (status === 'CANCELLED') {
+    if (status === "WAITING") {
+      return (
+        <span className="mx-1 inline text-gray-800">generando pedido</span>
+      );
+    } else if (status === "SEND") {
+      return (
+        <span className="mx-1 inline text-gray-400">
+          En espera del restaurante
+        </span>
+      );
+    } else if (status === "CANCELLED") {
       return <span className="mx-1 inline text-red-500">Cancelado</span>;
-    } else if (status === 'ACCEPTED') {
-      return <span className="mx-1 inline text-yellow-500">El restaurante esta preparando su pedido</span>;
-    } else if (status === 'DELIVERED') {
-      return <span className="mx-1 inline text-orange-500">Su pedido esta en camino</span>;
-    } else if (status === 'RECEIVED') {
+    } else if (status === "ACCEPTED") {
+      return (
+        <span className="mx-1 inline text-yellow-500">
+          El restaurante esta preparando su pedido
+        </span>
+      );
+    } else if (status === "DELIVERED") {
+      return (
+        <span className="mx-1 inline text-orange-500">
+          Su pedido esta en camino
+        </span>
+      );
+    } else if (status === "RECEIVED") {
       return <span className="mx-1 inline text-green-500">Recibido</span>;
     }
   };
@@ -54,8 +68,8 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getOrdersIdType('client');
-        setOrders(data);      
+        const data = await getOrdersIdType("client");
+        setOrders(data);
       } catch (error) {
         console.error("Error al obtener los pedidos:", error);
       }
@@ -100,18 +114,25 @@ const Page = () => {
                 <div className="text-center">
                   <div>
                     <p>
-                      <span className="inline font-bold">Repartidor numero</span>
+                      <span className="inline font-bold">
+                        Repartidor numero
+                      </span>
                       <p>{o.delivery?.id}</p>
                     </p>
                   </div>
                 </div>
 
-                {o.status === 'RECEIVED' && (
+                {o.status === "RECEIVED" && (
                   <div className="flex gap-2 flex-col">
                     <Link
                       href={{
-                        pathname: '/user/client/historial/review',
-                        query: { name: o.local.localName, rol: "LOCAL" , idUser: o.local.id, idOrder: o.id}
+                        pathname: "/user/client/historial/review",
+                        query: {
+                          name: o.local.localName,
+                          rol: "LOCAL",
+                          idUser: o.local.id,
+                          idOrder: o.id,
+                        },
                       }}
                       className="btn btn-neutral p-3 pointer-events-none opacity-50 bg-gray-300 text-gray-600 cursor-not-allowed "
                       title="Esta acción no está disponible"
@@ -119,27 +140,32 @@ const Page = () => {
                       <b>Puntuar Local</b>⭐
                     </Link>
                     <Link
-  href={{
-    pathname: '/user/client/historial/review',
-    query: { name: o.delivery?.id, rol: "DELIVERY", idUser: o.delivery?.id, idOrder: o.id }
-  }}
-  className="btn btn-neutral pointer-events-none opacity-50 bg-gray-300 text-gray-600 cursor-not-allowed relative"
->
-  <b>Puntuar Delivery</b>⭐
-  <span className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-black text-white px-2 py-1 text-xs rounded pointer-events-none opacity-0 group-hover:opacity-100">
-    Esta acción no está disponible
-  </span>
-</Link>
+                      href={{
+                        pathname: "/user/client/historial/review",
+                        query: {
+                          name: o.delivery?.id,
+                          rol: "DELIVERY",
+                          idUser: o.delivery?.id,
+                          idOrder: o.id,
+                        },
+                      }}
+                      className="btn btn-neutral pointer-events-none opacity-50 bg-gray-300 text-gray-600 cursor-not-allowed"
+                      title="Esta acción no está disponible"
+                    >
+                      <b>Puntuar Delivery</b>⭐
+                    </Link>
                   </div>
                 )}
               </div>
             ))}
           </div>
         ) : (
-          <div className="text-center">Realiza una orden para visualizar el historial</div>
+          <div className="text-center">
+            Realiza una orden para visualizar el historial
+          </div>
         )}
       </div>
     </div>
   );
-}
+};
 export default Page;

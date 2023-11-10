@@ -155,7 +155,7 @@ const Page = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 mt-5 mb-5">
+            <div className="grid grid-row-1 md:grid-cols-3 gap-2 mt-5 mb-5 ">
               {!eatables ? (
                 <div>cargando platos</div>
               ) : (

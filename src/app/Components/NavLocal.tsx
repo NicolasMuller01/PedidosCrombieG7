@@ -37,7 +37,7 @@ export const NavLocal = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 min-h-full bg-white">
+        <ul className="menu p-4  w-56 sm:w-80 min-h-full bg-white">
           {/* Sidebar content here */}
           <Link className="flex items-center justify-center pb-10" href="/"><img className="w-12 mr-2" src="/Home/PedidosCrombieLogo.png" alt="" /></Link>
           <Link href="/user/shop" className="btn btn-primary mr-4 border-none ">Perfil</Link >
