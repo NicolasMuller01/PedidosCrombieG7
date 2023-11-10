@@ -1,8 +1,7 @@
 import { parseCookies } from "nookies";
 import axios from "axios";
 
-export const  postReviews = async (idRol: any, information: any) => {
-
+export const postReviews = async (idRol: any, information: any) => {
   try {
     const cookies = parseCookies();
     const token = cookies.token;
@@ -15,19 +14,19 @@ export const  postReviews = async (idRol: any, information: any) => {
     };
 
     const params = {
-        idClient: userId,
-        idUser: idRol,
-      };
-      
-      const path = `${process.env.NEXT_PUBLIC_API_URL}/reviews/${params.idClient}/${params.idUser}`;
-      
-      const response = await axios.post(path, { information }, config);
-      
-      if (response.status === 200) {
-        console.log(response.status);
-        
-        return response.status;
-      }
+      idClient: userId,
+      idUser: idRol,
+    };
+
+    const path = `${process.env.NEXT_PUBLIC_API_URL}/reviews/${params.idClient}/${params.idUser}`;
+
+    const response = await axios.post(path, { information }, config);
+
+    if (response.status === 200) {
+      console.log(response.status);
+
+      return response.status;
+    }
   } catch (error: any) {
     console.error("Error al obtener la dirección:", error.message);
     throw error;

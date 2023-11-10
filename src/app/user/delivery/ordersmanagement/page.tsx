@@ -68,20 +68,20 @@ const Page = () => {
         orders.map((o) => (
           <div key={o.id} className="flex justify-between border border-black rounded-xl mt-5 max-w-3xl p-5">
             <div className="flex justify-center align-middle flex-col">
-              <p className="text-xl">Id del pedido: </p>
-              <p>{o.id}</p>
+              <p className="text-xs sm:text-xl">Id del pedido: </p>
+              <p className="text-xs sm:text-xl">{o.id}</p>
             </div>
             <div className="flex justify-start">
               <div className="flex justify-center align-middle flex-col">
-                <p>Direccion del cliente</p>
-                <p>{o.address.street}</p>
-                <p>{o.address.number}</p>
+                <p className="text-xs sm:text-xl">Direccion del cliente</p>
+                <p className="text-xs sm:text-xl">{o.address.street}</p>
+                <p className="text-xs sm:text-xl">{o.address.number}</p>
               </div>
             </div>
 
             <div className="flex flex-row justify-center align-middle items-center">
               <button
-                className="btn btn-accent rounded-xl"
+                className="btn btn-accent rounded-xl w-24 sm:w-36"
                 onClick={() => tomarPedidoFuncion(o.id)}
               >
                 Tomar pedido

@@ -4,7 +4,7 @@ import NavGeneral from "./Components/NavGeneral";
 import ButtonStage from "./Components/ButtonStage";
 
 export default function Home() {
-  require('dotenv').config();
+  require("dotenv").config();
 
   return (
     <div className="">
@@ -22,15 +22,22 @@ export default function Home() {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <div className="flex justify-between">
-            <h1 className="mb-5 text-[2.5rem] sm:text-[2.9rem] font-bold w-max"><div className="bg-primary inline h-20 w-max"><span>Pedidos</span></div>Crombie🍕</h1>
+              <h1 className="mb-5 text-[1.7rem] sm:text-[2.9rem] font-bold w-max">
+                <div className="bg-primary inline h-20 w-max">
+                  <span>Pedidos</span>
+                </div>
+                Crombie🍕
+              </h1>
             </div>
-             <p className="mb-5 sm:text-xl text-justify text-white drop-shadow-xl">
-             <b> Pedidos crombie es la aplicación definitiva para satisfacer tus
-              antojos gastronómicos con comodidad y rapidez. </b>Ya sea que estés
-              buscando una deliciosa comida casera, un plato étnico auténtico o
-              simplemente una entrega de tu restaurante favorito, Pedidos
-              crombie te conecta con una amplia variedad de opciones culinarias
-              a solo un toque de distancia.
+            <p className="mb-5 text-sm sm:text-xl text-justify text-white drop-shadow-xl">
+              <b>
+                Pedidos crombie es la aplicación definitiva para satisfacer tus
+                antojos gastronómicos con comodidad y rapidez.
+              </b>
+              Ya sea que estés buscando una deliciosa comida casera, un plato
+              étnico auténtico o simplemente una entrega de tu restaurante
+              favorito, Pedidos crombie te conecta con una amplia variedad de
+              opciones culinarias a solo un toque de distancia.
             </p>
           </div>
         </div>
@@ -39,7 +46,7 @@ export default function Home() {
       <div className="mt-20 mb-20 ">
         <div className="flex flex-col xl:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex flex-col items-center flex-1 ">
-            <div className="card w-96 bg-base-100 shadow-xl border h-[600px] mb-10 xl:mb-0">
+            <div className="card  w-72 sm:w-96 bg-base-100 shadow-xl border h-[600px] mb-10 xl:mb-0">
               <figure className="px-10 pt-10">
                 <img
                   src="/Home/Cliente.jpg"
@@ -47,7 +54,7 @@ export default function Home() {
                   className="rounded-xl w-[90%]"
                 />
               </figure>
-              <div className="card-body items-center text-center">
+              <div className="card-body items-center p-5 text-center">
                 <h2 className="card-title">Cliente</h2>
                 <p>
                   Crear una cuenta es sencillo y rápido. Regístrate ahora y
@@ -65,7 +72,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center flex-1">
-            <div className="card w-96 bg-base-100 shadow-xl border h-[600px] mb-10 xl:mb-0">
+            <div className="card  w-72 sm:w-96 bg-base-100 shadow-xl border h-[600px] mb-10 xl:mb-0">
               <figure className="px-10 pt-10">
                 <img
                   src="/Home/DeliveryMan.png"
@@ -73,7 +80,7 @@ export default function Home() {
                   className="rounded-xl w-[85%]"
                 />
               </figure>
-              <div className="card-body items-center text-center">
+              <div className="card-body items-center p-5 text-center">
                 <h2 className="card-title">Repartidor</h2>
                 <p>
                   Únete a nuestra red de repartidores y comienza a disfrutar de
@@ -92,7 +99,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center flex-1">
-            <div className="card w-96 bg-base-100 shadow-xl border h-[600px]">
+            <div className="card w-72 sm:w-96 bg-base-100 shadow-xl border h-[600px]">
               <figure className="px-10 pt-10">
                 <img
                   src="/Home/chef.jpg"
@@ -100,7 +107,7 @@ export default function Home() {
                   className="rounded-xl h-40 object-cover"
                 />
               </figure>
-              <div className="card-body items-center text-center">
+              <div className="card-body items-center p-5 text-center">
                 <h2 className="card-title">Restaurante</h2>
                 <p>
                   Regístrate y forma parte de nuestra comunidad gastronómica.
@@ -123,19 +130,21 @@ export default function Home() {
         <div className="hero min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div>
-              <h1 className="text-5xl font-bold pb-12 text-center">
+              <h1 className=" text-2xl sm:text-5xl font-bold pb-12 text-center">
                 ¿Porque trabajar con <b>nosotros?</b>
               </h1>
 
               <div className="hero-content flex flex-col lg:flex-row-reverse">
                 <div className="flex flex-col md:ml-40 items-start justify-start space-y-6">
-                <div className="flex gap-2">
+                  <div className="flex gap-2">
                     <input
                       type="checkbox"
                       checked={true}
                       className="checkbox checkbox-primary"
                     />
-                    <h3 className="pb-2 font-medium text-lg">Marketing efectivo</h3>
+                    <h3 className="pb-2 font-medium text-md sm:text-lg">
+                      Marketing efectivo
+                    </h3>
                   </div>
                   <div className="flex gap-2">
                     <input
@@ -143,7 +152,9 @@ export default function Home() {
                       checked={true}
                       className="checkbox checkbox-primary"
                     />
-                    <h3 className="pb-2 font-medium text-lg">Incremento en las ventas</h3>
+                    <h3 className="pb-2 font-medium text-md sm:text-lg">
+                      Incremento en las ventas
+                    </h3>
                   </div>
                   <div className="flex gap-2">
                     <input
@@ -151,7 +162,9 @@ export default function Home() {
                       checked={true}
                       className="checkbox checkbox-primary"
                     />
-                    <h3 className="pb-2 font-medium text-lg">Ampliación de la visibilidad</h3>
+                    <h3 className="pb-2 font-medium text-md sm:text-lg">
+                      Ampliación de la visibilidad
+                    </h3>
                   </div>
                   <div className="flex gap-2">
                     <input
@@ -159,7 +172,9 @@ export default function Home() {
                       checked={true}
                       className="checkbox checkbox-primary"
                     />
-                    <h3 className="pb-2 font-medium text-lg">Gestión simplificada de pedidos</h3>
+                    <h3 className="pb-2 font-medium text-md sm:text-lg">
+                      Gestión simplificada de pedidos
+                    </h3>
                   </div>
                   <div className="flex gap-2">
                     <input
@@ -167,7 +182,7 @@ export default function Home() {
                       checked={true}
                       className="checkbox checkbox-primary"
                     />
-                    <h3 className="pb-2 font-medium text-lg">
+                    <h3 className="pb-2 font-medium text-md sm:text-lg">
                       Recopilación de datos y retroalimentación
                     </h3>
                   </div>
@@ -177,7 +192,7 @@ export default function Home() {
                       checked={true}
                       className="checkbox checkbox-primary"
                     />
-                    <h3 className="pb-2 font-medium text-lg">
+                    <h3 className="pb-2 font-medium text-md sm:text-lg">
                       Flexibilidad y conveniencia para tus clientes
                     </h3>
                   </div>

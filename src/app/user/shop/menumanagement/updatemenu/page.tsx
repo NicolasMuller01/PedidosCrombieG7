@@ -49,20 +49,21 @@ const Page = () => {
       <h3 className="text-2xl mt-20">Menues disponibles</h3>
       {menusValidData.length > 0 ? (
         menusValidData.map((data) => (
-          <div key={data.idEatable} className="flex justify-between border border-black rounded-xl mt-5 max-w-2xl p-5">
-            <div className="flex justify-start">
+          <div key={data.idEatable} className="flex justify-between border border-black rounded-xl mt-5 min-w-full lg:w-[600px] lg:min-w-0 p-5">
+            <div className="flex justify-start align-middle items-center">
               <img
                 src={data.photo}
-                className="w-2/12 border rounded-full p-1"
+                className="h-8 w-8 sm:w-12 sm:h-12 border rounded-full p-1"
                 alt=""
               />
               <div className="flex justify-center align-middle flex-col">
-                <p className="text-xl">{data.name}</p>
-                <p>{data.price}</p>
+                <p className="text-xs sm:text-xl">{data.name}</p>
+                <p className="text-xs sm:text-xl">{data.price}</p>
               </div>
             </div>
 
-            <button className="btn btn-accent rounded-xl">
+            <div className="flex flex-col sm:flex-row"> 
+            <button className="btn btn-accent rounded-xl w-24 sm:w-36">
               <Link
                 key={data.idEatable}
                 href={`/user/shop/menumanagement/updatemenu/${data.idEatable}`}
@@ -72,11 +73,12 @@ const Page = () => {
             </button>
 
             <button
-              className="btn btn-secondary rounded-xl"
+              className="btn btn-secondary rounded-xl w-24 sm:w-36 "
               onClick={() => deleteEatable(data.idEatable)}
             >
                 Eliminar menu
             </button>
+            </div>
           </div>
         ))
       ) : (
